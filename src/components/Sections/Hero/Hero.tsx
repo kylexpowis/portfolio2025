@@ -12,12 +12,12 @@ export const btnStyles = {
 };
 
 const Hero = () => {
-  const ref = useRef();
+  const ref = useRef(null);
   const q = gsap.utils.selector(ref);
   gsap.registerPlugin(ScrollToPlugin);
   useEffect(() => {
     HeroSectionAnimation(q);
-  }, [q]);
+  }, []);
 
   return (
     <Container
