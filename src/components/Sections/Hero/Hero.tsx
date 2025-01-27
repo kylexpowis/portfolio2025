@@ -199,7 +199,7 @@ const Hero = () => {
               }}
             >
               <Image
-                layout="fill"
+                fill
                 style={{
                   opacity: 0,
                   borderRadius: "6px",

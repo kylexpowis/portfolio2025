@@ -66,7 +66,7 @@ const About = () => {
               <Image
                 alt="Personal Image"
                 className="img1 "
-                layout="fill"
+                fill
                 src={kaidublin}
               />
             </Box>
