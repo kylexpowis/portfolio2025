@@ -8,7 +8,8 @@ const nextConfig = {
       "ucarecdn.com",
       "www.svgrepo.com",
       "images.unsplash.com",
-      "res.cloudinary.com, cdn.jsdelivr.net",
+      "res.cloudinary.com,",
+      "cdn.jsdelivr.net",
     ],
   },
   webpack(config) {
