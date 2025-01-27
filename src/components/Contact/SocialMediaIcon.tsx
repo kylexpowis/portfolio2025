@@ -30,12 +30,12 @@ const SocialMediaIcon = ({ title, svg, href, filter }: ISocialMedia) => {
             },
           }}
         >
-          <img
+          <Image
             alt="Icon"
             className={`${filter ? "filter " : ""} icon`}
+            src={svg || ""}
             width="100"
             height="100"
-            src={svg || ""}
           />
         </Box>
         <Typography
