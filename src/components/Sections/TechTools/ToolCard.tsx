@@ -1,69 +1,37 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Image from 'next/image'
-import {IToolCard} from '../../../Types/Types';
-import {centeredStyles} from '../Perks/Perks';
-import {useEffect} from 'react';
-import gsap from 'gsap'
-const ToolCard = ({title, svg, filter, className} : IToolCard) => {
+import React from "react";
+import { Box, Typography } from "@mui/material";
 
-    useEffect(() => {
+const ToolCard = ({ title, svg, filter }: any) => {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100px",
+        margin: "1em",
+        filter: filter ? "grayscale(100%)" : "none",
+        transition: "filter 0.3s ease",
+      }}
+    >
+      <img
+        src={svg}
+        alt={`${title} logo`}
+        style={{ width: "80px", height: "80px", objectFit: "contain" }}
+      />
+      <Typography
+        variant="subtitle1"
+        sx={{
+          textAlign: "center",
+          mt: "0.5em",
+          fontSize: "0.9em",
+          fontWeight: 500,
+        }}
+      >
+        {title}
+      </Typography>
+    </Box>
+  );
+};
 
-        gsap.to(`.${className}`, {
-            opacity: 1,
-            stagger: .10,
-            scrollTrigger: {
-                trigger: `.${className}`,
-                start: 'top 70%'
-            }
-        })
-    }, [])
-    return (
-        <Box
-            className={className}
-            sx={{
-            my: '1em',
-            opacity: 0,
-            maxWidth: '250px',
-            transition: '.2s ease',
-            width: {
-                xs: '50%',
-                sm: '33%'
-            }
-        }}>
-            <Box
-                sx={{
-                ...centeredStyles,
-                width: {
-                    xs: '35px',
-                    sm: '60px'
-                },
-                height: {
-                    xs: '40px',
-                    sm: '60px'
-                }
-            }}>
-
-                <Image
-                    
-                    alt='Icon'
-                    className={`${filter
-                    ? 'filter '
-                    : ''} icon`}
-                    width='100%'
-                    height='100%'
-                    src={`${svg}`}/>
-            </Box>
-            <Typography
-                variant='h3'
-                sx={{
-                fontSize: {
-                    xs: '.86em',
-                    sm: '1em'
-                }
-            }}>{title}</Typography>
-        </Box>
-    )
-}
-
-export default ToolCard
+export default ToolCard;
