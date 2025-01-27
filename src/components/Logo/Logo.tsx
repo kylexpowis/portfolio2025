@@ -25,11 +25,6 @@ const Logo = ({ toggleDrawer, colorMode, color }: any) => {
         alignItems: "center",
       }}
     >
-      <img
-        className={`${colorMode.mode === "dark" ? "logoImg " : ""}small`}
-        // src={""}
-        alt=""
-      />
       <CustomLink
         color={color}
         fontWeight="600"

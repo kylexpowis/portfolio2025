@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
 import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
@@ -24,7 +17,7 @@ const Hero = () => {
   gsap.registerPlugin(ScrollToPlugin);
   useEffect(() => {
     HeroSectionAnimation(q);
-  }, []);
+  }, [q]);
 
   return (
     <Container

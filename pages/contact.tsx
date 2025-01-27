@@ -20,13 +20,15 @@ import { ColorModeContext } from "./_app";
 const Contact = () => {
   const colorMode = useContext(ColorModeContext);
 
-  const ref = useRef();
+  const ref = useRef(null);
   const form = useRef();
   const [status, setStatus] = useState(0);
   const [email, setEmail] = useState("");
   const color = status === 200 ? "green" : "red";
   const inputColor = colorMode.mode === "light" ? "black" : "white";
+
   const q = gsap.utils.selector(ref);
+
   useEffect(() => {
     gsap.to(".gradientBg2", {
       opacity: 1,
@@ -34,7 +36,9 @@ const Contact = () => {
       delay: ".75",
     });
     HeroSectionAnimation(q);
-  }, []);
+  }, [q]);
+
+  if (q) HeroSectionAnimation(q);
 
   const sendEmail = async (e: any) => {
     e.preventDefault();
