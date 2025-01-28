@@ -95,8 +95,8 @@ const Home: NextPage = () => {
       <Box sx={{ margin: "0 auto", color: "white" }}>
         <Hero />
         <Perks />
-        <Experience iconsArray={iconsArray} />
-        <Projects projectsArray={projectsArray} />
+        <Experience />
+        <Projects />
         <About />
         <CTA />
         <Box
