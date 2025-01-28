@@ -52,7 +52,7 @@ const ThemeHook = (
             // palette values for dark mode
             divider: "#353535",
             background: {
-              default: "#232323",
+              default: "#121212",
             },
             primary: {
               main: "#e0e0e0",
