@@ -17,7 +17,7 @@ const Hero = () => {
   gsap.registerPlugin(ScrollToPlugin);
   useEffect(() => {
     HeroSectionAnimation(q);
-  }, []);
+  }, [q]);
 
   return (
     <Container
