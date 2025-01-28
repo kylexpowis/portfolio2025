@@ -9,6 +9,7 @@ import { useEffect, useRef } from "react";
 import CursorAnimation from "../src/gsap/CursorAnimation";
 import About from "../src/components/Sections/About/About";
 import Layout from "../Layout/Layout";
+import { Box } from "@mui/material";
 
 const Home: NextPage = ({ projectsArray, iconsArray }: any) => {
   const ball = useRef();
