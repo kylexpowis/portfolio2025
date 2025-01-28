@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import React from "react";
 import type { NextPage } from "next";
 import Experience from "../src/components/Sections/TechTools/TechTools";
 import Hero from "../src/components/Sections/Hero/Hero";
