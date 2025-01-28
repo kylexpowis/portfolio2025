@@ -2,6 +2,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import { IProjectCard } from "../../../Types/Types";
 import { btnStyles } from "../Hero/Hero";
+import Image from "next/image";
 
 const ProjectCard = ({
   isReversed,
