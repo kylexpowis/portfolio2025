@@ -1,3 +1,4 @@
+export {};
 import type { AppProps } from "next/app";
 import "../styles/styles.css";
 import "./blog/blog.css";
