@@ -67,6 +67,7 @@ const About = () => {
                 alt="Personal Image"
                 className="img1 "
                 fill
+                sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 src={kaidublin}
               />
             </Box>

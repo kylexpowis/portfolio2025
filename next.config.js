@@ -2,13 +2,37 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "open.cruip.com",
-      "ucarecdn.com",
-      "www.svgrepo.com",
-      "images.unsplash.com",
-      "res.cloudinary.com",
-      "cdn.jsdelivr.net",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "open.cruip.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "ucarecdn.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.svgrepo.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.jsdelivr.net",
+        pathname: "/**",
+      },
     ],
   },
   webpack(config) {

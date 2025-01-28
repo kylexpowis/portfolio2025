@@ -43,11 +43,6 @@ const Layout = ({ navbarSx, title, children, desc }: ILayout) => {
           content="Kyle Powis Personal Portfolio | Front End Developer, and this is my Portfolio"
         />
 
-        <meta
-          property="og:image"
-          content="https://res.cloudinary.com/dwcu3wcol/image/upload/v1658929513/log-removebg-preview_fygpsd.png"
-        />
-
         {/* <!-- Og Type -->
 <meta property="og:type" content="article" /> */}
 
