@@ -128,3 +128,5 @@ export async function getStaticProps() {
     };
   }
 }
+
+export {};
