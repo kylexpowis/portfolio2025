@@ -1,3 +1,4 @@
+export {};
 import { Box } from "@mui/material";
 import Head from "next/head";
 import { useState } from "react";
@@ -21,7 +22,7 @@ const Layout = ({ navbarSx, title, children, desc }: ILayout) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link
           rel="shortcut icon"
-          // href="https://res.cloudinary.com/dwcu3wcol/image/upload/v1657099811/log_nkmcys.jpg" LOGO HERE
+          // href="" LOGO HERE
         />
 
         <meta
