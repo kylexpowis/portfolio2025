@@ -89,7 +89,7 @@ const Hero = () => {
                 fontWeight: "300",
               }}
             >
-              Hey there! I'm Kyle! I enjoy creating websites and web/mobile
+              Hey there! I&apos;m Kyle! I enjoy creating websites and web/mobile
               apps, ones that suit your desires and needs using latest
               technologies and cleanest design patterns.
             </Typography>
