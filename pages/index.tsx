@@ -1,3 +1,4 @@
+export {};
 import type { NextPage } from "next";
 import { Box } from "@mui/material";
 import Experience from "../src/components/Sections/TechTools/TechTools";
@@ -109,5 +110,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-export {};
