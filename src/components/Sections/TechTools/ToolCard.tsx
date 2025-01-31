@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import Image from 'next/image';
 
 const ToolCard = ({ title, svg, filter }: any) => {
   return (
@@ -14,10 +15,12 @@ const ToolCard = ({ title, svg, filter }: any) => {
         transition: "filter 0.3s ease",
       }}
     >
-      <img
-        src={svg}
-        alt={`${title} logo`}
-        style={{ width: "80px", height: "80px", objectFit: "contain" }}
+      <Image 
+        src={svg} 
+        alt={title}
+        width={40}
+        height={40}
+        style={{ filter: filter ? "invert(1)" : "none" }}
       />
       <Typography
         variant="subtitle1"

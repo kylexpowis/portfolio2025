@@ -1,4 +1,4 @@
-export {};
+export { };
 import {
   Box,
   Typography,
@@ -28,18 +28,20 @@ const Contact = () => {
   const color = status === 200 ? "green" : "red";
   const inputColor = colorMode.mode === "light" ? "black" : "white";
 
-  const q = gsap.utils.selector(ref);
-
   useEffect(() => {
+    // Move GSAP animations to client-side only
+    const q = gsap.utils.selector(ref.current);
+    
     gsap.to(".gradientBg2", {
       opacity: 1,
       duration: ".7",
       delay: ".75",
     });
-    HeroSectionAnimation(q);
-  }, [q]);
-
-  if (q) HeroSectionAnimation(q);
+    
+    if (q) {
+      HeroSectionAnimation(q);
+    }
+  }, []); // Remove q dependency
 
   const sendEmail = async (e: any) => {
     e.preventDefault();
@@ -66,211 +68,184 @@ const Contact = () => {
       title="Kyle Powis Contact Page"
       desc="If you have questions or need help you can contact me at kylepowis@gmail.com | Or Send a Message through the form."
     >
-      <Box
+      <Container
+        maxWidth="lg"
         sx={{
-          overflowX: "hidden",
+          pt: {
+            xs: "7.5em",
+            sm: "8.5em",
+          },
+          pb: "4em",
+          position: "relative",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <Container
-          id="hero"
-          maxWidth="lg"
+        {/* Background elements */}
+        <Box
           sx={{
+            width: "150px",
+            height: "150px",
+            zIndex: "0",
+            position: "absolute",
+            top: { xs: "60%", sm: "75%" },
+            transform: "rotate(15deg)",
+            right: { xs: "80%", sm: "86%" },
+            background: "transparent",
+            backgroundImage: "radial-gradient(#0092ff 2px, transparent 0)",
+            backgroundSize: "15px 13px",
+          }}
+        />
+        <Box
+          className="gradientBg2"
+          sx={{
+            width: "90px",
+            height: "90px",
+            zIndex: "0",
+            position: "absolute",
+            top: { xs: "6%", sm: "5%" },
+            opacity: 0,
+            right: "-4%",
+            background: "transparent",
+            backgroundImage: "radial-gradient(#0092ff 2px, transparent 0)",
+            backgroundSize: "15px 13px",
+          }}
+        />
+
+        {/* Hero Text */}
+        <Box ref={ref}>
+          <Typography
+            className="t1"
+            variant="h1"
+            sx={{
+              fontSize: { xs: "2.4em", sm: "3.4em", md: "3.8em" },
+              textAlign: "center",
+              transform: "translateY(40px)",
+              opacity: 0,
+              fontWeight: "600",
+              mb: 3
+            }}
+          >
+            Let&apos;s achieve the impossible together
+          </Typography>
+          <Typography
+            variant="h2"
+            className="secondary t2 t25o0"
+            sx={{
+              textAlign: "center",
+              margin: "0 auto",
+              fontSize: { xs: ".9em", sm: "1em" },
+              maxWidth: "570px",
+              fontWeight: "300",
+              mb: 6
+            }}
+          >
+            If you need help or have some questions, I&apos;ll be there ready and happy to help.
+          </Typography>
+        </Box>
+
+        {/* Contact Form and Info */}
+        <Box
+          component="form"
+          ref={form}
+          onSubmit={sendEmail}
+          sx={{
+            width: { xs: "100%", md: "600px" },
             margin: "0 auto",
-            pt: {
-              xs: "7.5em",
-              sm: "8.5em",
-            },
-            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            gap: 3
           }}
         >
-          <Box
+          <Typography
             sx={{
-              width: "150px",
-              height: "150px",
-              zIndex: "0",
-              position: "absolute",
-              top: {
-                xs: "60%",
-                sm: " 75%",
-              },
-              transform: "rotate(15deg)",
-              right: {
-                xs: "80%",
-                sm: "86%",
-              },
-              background: "transparent",
-              backgroundImage: "radial-gradient(#0092ff 2px, transparent 0)",
-              backgroundSize: "15px 13px",
+              textAlign: "center",
+              pb: "1em",
+              color,
             }}
-          ></Box>
-          <Box
-            className="gradientBg2"
-            sx={{
-              width: "90px",
-              height: "90px",
-              zIndex: "0",
-              position: "absolute",
-              top: {
-                xs: "6%",
-                sm: "5%",
-              },
-              opacity: 0,
-              right: "-4%",
-              background: "transparent",
-              backgroundImage: "radial-gradient(#0092ff 2px, transparent 0)",
-              backgroundSize: "15px 13px",
-            }}
-          ></Box>
-          <Box ref={ref}>
-            <Typography
-              className="t1"
-              variant="h1"
-              sx={{
-                fontSize: {
-                  xs: "2.4em",
-                  sm: "3.4em",
-                  md: "3.8em",
-                },
-                textAlign: "center",
-                transform: "translateY(40px)",
-                opacity: 0,
-                pt: "1em",
-                fontWeight: "600",
-              }}
-            >
-              Let&apos;s achieve the impossible together
-            </Typography>
-            <Typography
-              variant="h2"
-              className="secondary t2 t25o0"
-              sx={{
-                textAlign: "center",
-                pt: "1.5em",
-                margin: "0 auto",
-                fontSize: {
-                  xs: ".9em",
-                  sm: "1em",
-                },
-                maxWidth: "570px",
-                fontWeight: "300",
-              }}
-            >
-              If you need help or have some questions, I&apos;ll be there ready
-              and happy to help.
-            </Typography>
-          </Box>
+          >
+            {status === 200 ? "Message sent. Expect a reply soon!" : ""}
+            {status > 200 &&
+              "There was an error, make sure to fill all the inputs and try again."}
+          </Typography>
           <Box
             sx={{
-              justifyContent: "center",
               display: "flex",
-              margin: "0 auto",
-              flexDirection: "column",
+              gap: "1em",
+            }}
+          >
+            <Input name="user_name" label="Name" />
+            <Input name="user_phone" type="number" label="Phone" />
+          </Box>
+          {/* <Input name="user_email" type='email' label='Email' mt='1em'/> */}
+
+          <TextField
+            name={"user_email"}
+            type={"email"}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            sx={{
+              color: inputColor || "black",
+              input: {
+                color: inputColor || "black",
+              },
+              width: "100%",
+              mt: "1em",
+            }}
+            label={"Email"}
+            variant="outlined"
+          />
+
+          <Input name="message" label="Subject" mt="1em" multi={true} />
+
+          <Button
+            type="submit"
+            className="loadMore"
+            variant="contained"
+            sx={{
+              display: "flex",
+              margin: "4em auto ",
+              padding: ".5em 3.5em",
               width: {
                 xs: "100%",
-                md: "600px",
+                sm: "250px",
+              },
+              background: "transparent",
+              border: "1px solid",
+              color: "#fffff",
+              ":hover": {
+                border: "1px solid transparent",
               },
             }}
           >
-            <Box
-              ref={form}
-              onSubmit={sendEmail}
-              component="form"
-              sx={{
-                mt: "6em",
-                justifyContent: "space-between",
-              }}
-            >
-              <Typography
-                sx={{
-                  textAlign: "center",
-                  pb: "1em",
-                  color,
-                }}
-              >
-                {status === 200 ? "Message sent. Expect a reply soon!" : ""}
-                {status > 200 &&
-                  "There was an error, make sure to fill all the inputs and try again."}
-              </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  gap: "1em",
-                }}
-              >
-                <Input name="user_name" label="Name" />
-                <Input name="user_phone" type="number" label="Phone" />
-              </Box>
-              {/* <Input name="user_email" type='email' label='Email' mt='1em'/> */}
+            Send
+          </Button>
+        </Box>
 
-              <TextField
-                name={"user_email"}
-                type={"email"}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                sx={{
-                  color: inputColor || "black",
-                  input: {
-                    color: inputColor || "black",
-                  },
-                  width: "100%",
-                  mt: "1em",
-                }}
-                label={"Email"}
-                variant="outlined"
-              />
+        <Divider sx={{ my: 4 }} />
 
-              <Input name="message" label="Subject" mt="1em" multi={true} />
+        {/* Contact Information */}
+        <Box sx={{ width: { xs: "100%", md: "600px" }, margin: "0 auto" }}>
+          <ContactBox
+            href="mailto:kylepowis@gmail.com"
+            target="_blank"
+            t1="Get in touch"
+            t2="Email Address"
+            t3="kylepowis@gmail.com"
+          />
+          <ContactBox
+            target="_blank"
+            href={""}
+            t1="Contact Directly"
+            t2="Phone Number"
+            t3="+44 7427 235 749"
+          />
+        </Box>
 
-              <Button
-                type="submit"
-                className="loadMore"
-                variant="contained"
-                sx={{
-                  display: "flex",
-                  margin: "4em auto ",
-                  padding: ".5em 3.5em",
-                  width: {
-                    xs: "100%",
-                    sm: "250px",
-                  },
-                  background: "transparent",
-                  border: "1px solid",
-                  color: "#fffff",
-                  ":hover": {
-                    border: "1px solid transparent",
-                  },
-                }}
-              >
-                Send
-              </Button>
-            </Box>
-
-            <Divider />
-            <Box
-              sx={{
-                my: "3em",
-              }}
-            >
-              <ContactBox
-                href="mailto:kylepowis@gmail.com"
-                target="_blank"
-                t1="Get in touch"
-                t2="Email Address"
-                t3="kylepowis@gmail.com"
-              />
-
-              <ContactBox
-                target="_blank"
-                href={""}
-                t1="Contact Directly "
-                t2="Phone Number"
-                t3="+44 7427 235 749"
-              />
-            </Box>
-          </Box>
-          <SocialMedia />
-        </Container>
-      </Box>
+        {/* Social Media */}
+        <SocialMedia />
+      </Container>
     </Layout>
   );
 };
