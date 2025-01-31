@@ -29,9 +29,8 @@ const ProjectCard = ({
       });
   }, []);
 
-  const rotation = `rotateY(${
-    (elementSize.x / 2 - cursorPosition.x) / 25
-  }deg) rotateX(${(elementSize.y / 2 - cursorPosition.y) / 30}deg)`;
+  const rotation = `rotateY(${(elementSize.x / 2 - cursorPosition.x) / 25
+    }deg) rotateX(${(elementSize.y / 2 - cursorPosition.y) / 30}deg)`;
 
   return (
     <Box
@@ -66,7 +65,15 @@ const ProjectCard = ({
           position: "relative",
         }}
       >
-        <img alt="Project Image" className="img1" src={`${img}`} />
+        <Image
+          alt="Project Image"
+          src={`${img}`}
+          fill
+          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 600px"
+          style={{
+            objectFit: 'cover'
+          }}
+        />
       </Box>
       <Box
         ref={ref}
@@ -76,9 +83,8 @@ const ProjectCard = ({
           "&:hover": {
             transform: {
               xs: ` translateY(-25%)`,
-              md: `${rotation} ${
-                isReversed ? "translateX(-25%)" : "translateX(25%)"
-              }`,
+              md: `${rotation} ${isReversed ? "translateX(-25%)" : "translateX(25%)"
+                }`,
             },
           },
           borderRadius: "6px",
