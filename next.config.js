@@ -38,7 +38,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*.pdf", // Ensures PDFs are served correctly
+        source: "/:path*.pdf", // Ensure PDFs are served with the correct headers
         headers: [
           {
             key: "Content-Type",
@@ -46,7 +46,7 @@ const nextConfig = {
           },
           {
             key: "Content-Disposition",
-            value: "inline", // Makes PDFs open in the browser instead of downloading
+            value: "inline", // Open in browser instead of downloading
           },
           {
             key: "Cache-Control",
@@ -57,7 +57,13 @@ const nextConfig = {
     ];
   },
   webpack(config) {
-    config.module.rules.push({ test: /\.svg$/, use: ["@svgr/webpack"] });
+    config.module.rules.push(
+      { test: /\.svg$/, use: ["@svgr/webpack"] },
+      {
+        test: /\.pdf$/,
+        type: "asset/resource", // Ensures PDFs are correctly handled if imported
+      }
+    );
     return config;
   },
 };
