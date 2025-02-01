@@ -45,6 +45,10 @@ const nextConfig = {
             value: "application/pdf",
           },
           {
+            key: "Content-Disposition",
+            value: "inline", // Makes PDFs open in the browser instead of downloading
+          },
+          {
             key: "Cache-Control",
             value: "public, max-age=31536000, immutable",
           },

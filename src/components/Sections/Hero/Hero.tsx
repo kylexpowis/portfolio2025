@@ -120,7 +120,7 @@ const Hero = () => {
               >
                 View Projects
               </Button>
-              <a href="/KYLE_POWIS_CV_2025_JAN.pdf" download>
+              <a href="/KYLE_POWIS_CV_2025_JAN.pdf" target="_blank" rel="noopener noreferrer">
                 <Button
                   className="b2"
                   sx={{
