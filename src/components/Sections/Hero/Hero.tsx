@@ -1,4 +1,3 @@
-
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import gsap from "gsap";
 import { useRef, useEffect } from "react";
@@ -121,11 +120,7 @@ const Hero = () => {
               >
                 View Projects
               </Button>
-              <a
-                href="/KYLE_POWIS_CV_2025_JAN.pdf"
-                rel="noreferrer"
-                target="_blank"
-              >
+              <a href="/KYLE_POWIS_CV_2025_JAN.pdf" target="_blank">
                 <Button
                   className="b2"
                   sx={{
