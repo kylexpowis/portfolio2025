@@ -31,6 +31,13 @@ const projectsArray = [
       "Cryptocurrency data analytics platform providing insights into trading trends using the coinmarketcap API.",
   },
   {
+    title: "DasBros Portfolio",
+    img: "/projects/dasbroslogo.png", // Image path
+    siteUrl: "https://dasbros.co.uk/",
+    repoUrl: "",
+    description: "Portoflio for Videographers and 3D GFX Artists DasBros.",
+  },
+  {
     title: "Cluster Books",
     img: "/projects/clusterbookslogo2.png", // Image path
     siteUrl: "https://northcoders.com/project-phase/cluster-books",
